@@ -1,0 +1,32 @@
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    restart: always
+    networks:
+      - public_network
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    ports:
+      - "3000:3000"
+    restart: always
+    networks:
+      - public_network
+
+  http-simulator:
+    image: pierrevincent/prom-http-simulator:0.1
+    ports:
+      - "8080:8080"
+    restart: always
+    networks:
+      - public_network
+
+networks:
+  private_network:
+    driver: bridge
+  public_network:
+    driver: bridge

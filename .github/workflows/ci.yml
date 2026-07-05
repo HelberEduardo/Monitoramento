@@ -1,0 +1,23 @@
+name: Executar Testes
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o codigo do repositório
+        uses: actions/checkout@v4
+
+      - name: Subir ambiente com Docker Compose
+        run: docker compose up -d
+
+      - name: Verificar se os containers estão rodando
+        run: docker ps
+
+      - name: Derrubar o ambiente
+        run: docker compose down
