@@ -4,12 +4,12 @@
   "metadata": {
     "name": "adfkwv2",
     "namespace": "default",
-    "uid": "d132f1df-cc27-4403-9c44-e80a9eb41b4b",
-    "resourceVersion": "1783609376862006",
-    "generation": 6,
-    "creationTimestamp": "2026-07-09T13:45:20Z",
+    "uid": "11c1ebf1-d01a-48d1-a3a5-eac47394cc38",
+    "resourceVersion": "1783623011148986",
+    "generation": 5,
+    "creationTimestamp": "2026-07-09T18:13:54Z",
     "labels": {
-      "grafana.app/deprecatedInternalID": "3558894344597504"
+      "grafana.app/deprecatedInternalID": "3626482517467136"
     },
     "annotations": {
       "grafana.app/createdBy": "access-policy:service",
@@ -18,11 +18,11 @@
       "grafana.app/managerAllowsEdits": "true",
       "grafana.app/managerId": "Default",
       "grafana.app/saved-from-ui": "Grafana v13.0.2 (3fcdbc5a)",
-      "grafana.app/sourceChecksum": "704cfbe7ec35d0142afa7073240a07e3",
+      "grafana.app/sourceChecksum": "b4c975af2885e3ad3b9b0ee4edd2b222",
       "grafana.app/sourcePath": "/etc/grafana/provisioning/dashboards/dashboards/dashboard-idus.json",
-      "grafana.app/sourceTimestamp": "1783604646000",
-      "grafana.app/updatedBy": "user:ffrle7k4dk7i8b",
-      "grafana.app/updatedTimestamp": "2026-07-09T15:02:56Z"
+      "grafana.app/sourceTimestamp": "1783620694000",
+      "grafana.app/updatedBy": "user:bfrm262iqa328e",
+      "grafana.app/updatedTimestamp": "2026-07-09T18:50:11Z"
     }
   },
   "spec": {
@@ -554,7 +554,7 @@
         "spec": {
           "id": 5,
           "title": "Tempo Médio das Requisições",
-          "description": "",
+          "description": "O gráfico mostra a média de tempo de requisições dividindo a taxa de crescimento da soma dos tempos pela  taxa de requisições.",
           "links": [],
           "data": {
             "kind": "QueryGroup",
@@ -572,8 +572,10 @@
                       },
                       "spec": {
                         "editorMode": "code",
-                        "expr": "rate(prometheus_http_request_duration_seconds_sum[5m])",
-                        "legendFormat": "Duração de Requisições{{label_name}}",
+                        "exemplar": false,
+                        "expr": "sum(rate(prometheus_http_request_duration_seconds_sum{instance=\"prometheus:9090\"}[1m])) / sum((rate(prometheus_http_request_duration_seconds_count[1m])))",
+                        "interval": "",
+                        "legendFormat": "Duração{{label_name}}",
                         "range": true
                       }
                     },
@@ -593,14 +595,14 @@
                       },
                       "spec": {
                         "editorMode": "code",
-                        "expr": "rate(prometheus_http_request_duration_seconds_count[5m])",
+                        "expr": "sum by (handler) (\r\n  rate(prometheus_http_request_duration_seconds_sum[5m])\r\n)\r\n/\r\nsum by (handler) (\r\n  rate(prometheus_http_request_duration_seconds_count[5m])\r\n)",
                         "instant": false,
-                        "legendFormat": "Duração de Requisições{{label_name}}",
+                        "legendFormat": "__auto",
                         "range": true
                       }
                     },
                     "refId": "B",
-                    "hidden": false
+                    "hidden": true
                   }
                 }
               ],
@@ -671,7 +673,7 @@
                     "insertNulls": false,
                     "lineInterpolation": "linear",
                     "lineWidth": 1,
-                    "pointSize": 5,
+                    "pointSize": 8,
                     "scaleDistribution": {
                       "type": "linear"
                     },
@@ -685,7 +687,8 @@
                     "thresholdsStyle": {
                       "mode": "off"
                     }
-                  }
+                  },
+                  "fieldMinMax": false
                 },
                 "overrides": []
               }
@@ -718,10 +721,6 @@
                 "alertName": "",
                 "dashboardAlerts": false,
                 "datasource": "-- Grafana --",
-                "folder": {
-                  "title": "Alertas",
-                  "uid": "ffrli7g2pbrb4d"
-                },
                 "groupBy": [],
                 "groupMode": "default",
                 "maxItems": 20,
@@ -756,7 +755,7 @@
               "x": 0,
               "y": 0,
               "width": 6,
-              "height": 8,
+              "height": 5,
               "element": {
                 "kind": "ElementReference",
                 "name": "panel-1"
@@ -769,7 +768,7 @@
               "x": 6,
               "y": 0,
               "width": 6,
-              "height": 8,
+              "height": 5,
               "element": {
                 "kind": "ElementReference",
                 "name": "panel-3"
@@ -782,7 +781,7 @@
               "x": 12,
               "y": 0,
               "width": 12,
-              "height": 8,
+              "height": 5,
               "element": {
                 "kind": "ElementReference",
                 "name": "panel-6"
@@ -793,8 +792,8 @@
             "kind": "GridLayoutItem",
             "spec": {
               "x": 0,
-              "y": 8,
-              "width": 12,
+              "y": 5,
+              "width": 8,
               "height": 8,
               "element": {
                 "kind": "ElementReference",
@@ -805,9 +804,9 @@
           {
             "kind": "GridLayoutItem",
             "spec": {
-              "x": 12,
-              "y": 8,
-              "width": 12,
+              "x": 8,
+              "y": 5,
+              "width": 8,
               "height": 8,
               "element": {
                 "kind": "ElementReference",
@@ -818,9 +817,9 @@
           {
             "kind": "GridLayoutItem",
             "spec": {
-              "x": 12,
-              "y": 16,
-              "width": 12,
+              "x": 16,
+              "y": 5,
+              "width": 8,
               "height": 8,
               "element": {
                 "kind": "ElementReference",
