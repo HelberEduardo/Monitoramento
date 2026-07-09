@@ -4,19 +4,25 @@
   "metadata": {
     "name": "adfkwv2",
     "namespace": "default",
-    "uid": "05eef912-c70f-42cf-8db3-1502d227d2e8",
-    "resourceVersion": "1783536041386999",
-    "generation": 9,
-    "creationTimestamp": "2026-07-08T17:47:08Z",
+    "uid": "48866390-a315-4e9c-972b-e34ec2e159d5",
+    "resourceVersion": "1783552082440003",
+    "generation": 2,
+    "creationTimestamp": "2026-07-08T23:00:57Z",
     "labels": {
-      "grafana.app/deprecatedInternalID": "3257739385266176"
+      "grafana.app/deprecatedInternalID": "3336334772117504"
     },
     "annotations": {
-      "grafana.app/createdBy": "user:cfricz60fp79ca",
+      "grafana.app/createdBy": "access-policy:service",
       "grafana.app/folder": "",
+      "grafana.app/managedBy": "classic-file-provisioning",
+      "grafana.app/managerAllowsEdits": "true",
+      "grafana.app/managerId": "Default",
       "grafana.app/saved-from-ui": "Grafana v13.0.2 (3fcdbc5a)",
-      "grafana.app/updatedBy": "user:cfricz60fp79ca",
-      "grafana.app/updatedTimestamp": "2026-07-08T18:40:41Z"
+      "grafana.app/sourceChecksum": "65274eff9c5f8d882ef454a93c403017",
+      "grafana.app/sourcePath": "/etc/grafana/provisioning/dashboards/dashboards/dashboard-idus.json",
+      "grafana.app/sourceTimestamp": "1783549208000",
+      "grafana.app/updatedBy": "user:cfrj7br4atpfke",
+      "grafana.app/updatedTimestamp": "2026-07-08T23:08:02Z"
     }
   },
   "spec": {
@@ -118,9 +124,7 @@
                 "orientation": "auto",
                 "percentChangeColorMode": "standard",
                 "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
+                  "calcs": ["lastNotNull"],
                   "fields": "",
                   "values": false
                 },
@@ -269,9 +273,7 @@
                   "placement": "bottom",
                   "showLegend": true
                 },
-                "timezone": [
-                  "America/Fortaleza"
-                ],
+                "timezone": ["America/Fortaleza"],
                 "tooltip": {
                   "hideZeros": false,
                   "mode": "single",
@@ -384,9 +386,7 @@
                 "orientation": "auto",
                 "percentChangeColorMode": "standard",
                 "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
+                  "calcs": ["lastNotNull"],
                   "fields": "/^Status 5xx$/",
                   "values": false
                 },
@@ -396,7 +396,7 @@
               },
               "fieldConfig": {
                 "defaults": {
-                  "unit": "ms",
+                  "unit": "percent",
                   "thresholds": {
                     "mode": "absolute",
                     "steps": [
@@ -618,9 +618,7 @@
                   "placement": "bottom",
                   "showLegend": true
                 },
-                "timezone": [
-                  "America/Fortaleza"
-                ],
+                "timezone": ["America/Fortaleza"],
                 "tooltip": {
                   "hideZeros": false,
                   "mode": "single",
@@ -784,7 +782,7 @@
       "hideTimepicker": false,
       "fiscalYearStartMonth": 0
     },
-    "title": "New dashboard",
+    "title": "⭐ Idus ⭐",
     "variables": [],
     "preferences": {
       "layout": {

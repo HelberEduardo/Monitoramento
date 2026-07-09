@@ -8,6 +8,12 @@ services:
     restart: always
     networks:
       - public_network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:9090/-/ready"]
+      interval: 10s # Tempo entre as checagens
+      timeout: 5s # Tempo limite para o comando responder
+      retries: 3 # Quantas vezes pode falhar antes de marcar como 'unhealthy'
+      start_period: 5s # Tempo de carência para a aplicação iniciar antes de começar a valer
 
   grafana:
     image: grafana/grafana-oss:latest
@@ -19,10 +25,17 @@ services:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD: admin
     depends_on:
-      - prometheus
+      prometheus:
+        condition: service_healthy
     restart: always
     networks:
       - public_network
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 3000 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
 
   http-simulator:
     image: pierrevincent/prom-http-simulator:0.1
@@ -31,6 +44,12 @@ services:
     restart: always
     networks:
       - public_network
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 8080 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
 
 networks:
   private_network:
