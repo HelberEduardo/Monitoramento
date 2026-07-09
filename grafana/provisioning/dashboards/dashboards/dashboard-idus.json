@@ -4,12 +4,12 @@
   "metadata": {
     "name": "adfkwv2",
     "namespace": "default",
-    "uid": "48866390-a315-4e9c-972b-e34ec2e159d5",
-    "resourceVersion": "1783552082440003",
-    "generation": 2,
-    "creationTimestamp": "2026-07-08T23:00:57Z",
+    "uid": "d132f1df-cc27-4403-9c44-e80a9eb41b4b",
+    "resourceVersion": "1783609376862006",
+    "generation": 6,
+    "creationTimestamp": "2026-07-09T13:45:20Z",
     "labels": {
-      "grafana.app/deprecatedInternalID": "3336334772117504"
+      "grafana.app/deprecatedInternalID": "3558894344597504"
     },
     "annotations": {
       "grafana.app/createdBy": "access-policy:service",
@@ -18,11 +18,11 @@
       "grafana.app/managerAllowsEdits": "true",
       "grafana.app/managerId": "Default",
       "grafana.app/saved-from-ui": "Grafana v13.0.2 (3fcdbc5a)",
-      "grafana.app/sourceChecksum": "65274eff9c5f8d882ef454a93c403017",
+      "grafana.app/sourceChecksum": "704cfbe7ec35d0142afa7073240a07e3",
       "grafana.app/sourcePath": "/etc/grafana/provisioning/dashboards/dashboards/dashboard-idus.json",
-      "grafana.app/sourceTimestamp": "1783549208000",
-      "grafana.app/updatedBy": "user:cfrj7br4atpfke",
-      "grafana.app/updatedTimestamp": "2026-07-08T23:08:02Z"
+      "grafana.app/sourceTimestamp": "1783604646000",
+      "grafana.app/updatedBy": "user:ffrle7k4dk7i8b",
+      "grafana.app/updatedTimestamp": "2026-07-09T15:02:56Z"
     }
   },
   "spec": {
@@ -124,7 +124,9 @@
                 "orientation": "auto",
                 "percentChangeColorMode": "standard",
                 "reduceOptions": {
-                  "calcs": ["lastNotNull"],
+                  "calcs": [
+                    "lastNotNull"
+                  ],
                   "fields": "",
                   "values": false
                 },
@@ -273,7 +275,9 @@
                   "placement": "bottom",
                   "showLegend": true
                 },
-                "timezone": ["America/Fortaleza"],
+                "timezone": [
+                  "America/Fortaleza"
+                ],
                 "tooltip": {
                   "hideZeros": false,
                   "mode": "single",
@@ -386,7 +390,9 @@
                 "orientation": "auto",
                 "percentChangeColorMode": "standard",
                 "reduceOptions": {
-                  "calcs": ["lastNotNull"],
+                  "calcs": [
+                    "lastNotNull"
+                  ],
                   "fields": "/^Status 5xx$/",
                   "values": false
                 },
@@ -618,7 +624,9 @@
                   "placement": "bottom",
                   "showLegend": true
                 },
-                "timezone": ["America/Fortaleza"],
+                "timezone": [
+                  "America/Fortaleza"
+                ],
                 "tooltip": {
                   "hideZeros": false,
                   "mode": "single",
@@ -684,6 +692,58 @@
             }
           }
         }
+      },
+      "panel-6": {
+        "kind": "Panel",
+        "spec": {
+          "id": 6,
+          "title": "Alertas",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "alertlist",
+            "version": "13.0.2",
+            "spec": {
+              "options": {
+                "alertInstanceLabelFilter": "",
+                "alertName": "",
+                "dashboardAlerts": false,
+                "datasource": "-- Grafana --",
+                "folder": {
+                  "title": "Alertas",
+                  "uid": "ffrli7g2pbrb4d"
+                },
+                "groupBy": [],
+                "groupMode": "default",
+                "maxItems": 20,
+                "showInactiveAlerts": false,
+                "sortOrder": 1,
+                "stateFilter": {
+                  "error": true,
+                  "firing": true,
+                  "noData": true,
+                  "normal": true,
+                  "pending": true,
+                  "recovering": true
+                },
+                "viewMode": "list"
+              },
+              "fieldConfig": {
+                "defaults": {},
+                "overrides": []
+              }
+            }
+          }
+        }
       }
     },
     "layout": {
@@ -725,7 +785,7 @@
               "height": 8,
               "element": {
                 "kind": "ElementReference",
-                "name": "panel-2"
+                "name": "panel-6"
               }
             }
           },
@@ -747,6 +807,19 @@
             "spec": {
               "x": 12,
               "y": 8,
+              "width": 12,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 16,
               "width": 12,
               "height": 8,
               "element": {
