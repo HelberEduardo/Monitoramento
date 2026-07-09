@@ -28,7 +28,7 @@ Sistemas industriais exigem alta disponibilidade. Por isso, foram implementados 
 
 ---
 
-## 🚀 Como Executar a Stack
+## Como Executar a Stack
 
 ### Pré-requisitos
 
@@ -42,3 +42,7 @@ Sistemas industriais exigem alta disponibilidade. Por isso, foram implementados 
    git clone https://github.com/HelberEduardo/Monitoramento.git
    cd ./Monitoramento
    ```
+## Login
+### Acesso de testes local
+- **Usuário**: admin
+- **Senha**: admin
